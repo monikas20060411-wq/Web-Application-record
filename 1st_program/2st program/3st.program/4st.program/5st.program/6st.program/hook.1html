@@ -1,0 +1,288 @@
+import React from "react";
+
+function Student(props) {
+    return (
+        <div>
+            <h2>Student Information</h2>
+
+            <p>Name: {props.name}</p>
+            <p>Age: {props.age}</p>
+            <p>Course: {props.course}</p>
+            <p>College: {props.college}</p>
+        </div>
+    );
+}
+
+function App() {
+    return (
+        <div>
+            <h1>Student Application</h1>
+
+            <Student
+                name="Rahul"
+                age="20"
+                course="BCA"
+                college="ABC College"
+            />
+        </div>
+    );
+}
+
+export default App;
+
+
+Concept: The Student component receives student details through props.
+
+2. Counter Using Props and Event Handling
+import React, { useState } from "react";
+
+function Buttons(props) {
+    return (
+        <div>
+            <button onClick={props.increase}>
+                Increase
+            </button>
+
+            <button onClick={props.decrease}>
+                Decrease
+            </button>
+
+            <button onClick={props.reset}>
+                Reset
+            </button>
+        </div>
+    );
+}
+
+function App() {
+
+    const [count, setCount] = useState(0);
+
+    function increase() {
+        setCount(count + 1);
+    }
+
+    function decrease() {
+        setCount(count - 1);
+    }
+
+    function reset() {
+        setCount(0);
+    }
+
+    return (
+        <div>
+            <h1>Counter Application</h1>
+
+            <h2>Count: {count}</h2>
+
+            <Buttons
+                increase={increase}
+                decrease={decrease}
+                reset={reset}
+            />
+        </div>
+    );
+}
+
+export default App;
+
+
+Concept: Functions are passed from the parent component to the child component using props.
+
+3. Student Information with Reset Button
+import React, { useState } from "react";
+
+function Student(props) {
+    return (
+        <div>
+            <h2>Student Details</h2>
+
+            <p>Name: {props.name}</p>
+            <p>Course: {props.course}</p>
+            <p>Roll Number: {props.rollNo}</p>
+
+            <button onClick={props.reset}>
+                Reset
+            </button>
+        </div>
+    );
+}
+
+function App() {
+
+    const [student, setStudent] = useState({
+        name: "Anita",
+        course: "B.Sc Computer Science",
+        rollNo: "101"
+    });
+
+    function resetStudent() {
+        setStudent({
+            name: "",
+            course: "",
+            rollNo: ""
+        });
+    }
+
+    return (
+        <div>
+            <h1>Student Application</h1>
+
+            <Student
+                name={student.name}
+                course={student.course}
+                rollNo={student.rollNo}
+                reset={resetStudent}
+            />
+        </div>
+    );
+}
+
+export default App;
+
+
+Concept: Student data is stored in state, while the reset event is passed to the child through props.
+
+4. Student + Counter Application
+import React, { useState } from "react";
+
+function Student(props) {
+    return (
+        <div>
+            <h2>Student Information</h2>
+
+            <p>Name: {props.name}</p>
+            <p>Course: {props.course}</p>
+        </div>
+    );
+}
+
+function Counter(props) {
+    return (
+        <div>
+            <h2>Counter: {props.count}</h2>
+
+            <button onClick={props.increase}>
+                Increase
+            </button>
+
+            <button onClick={props.decrease}>
+                Decrease
+            </button>
+
+            <button onClick={props.reset}>
+                Reset
+            </button>
+        </div>
+    );
+}
+
+function App() {
+
+    const [count, setCount] = useState(0);
+
+    const increase = () => {
+        setCount(count + 1);
+    };
+
+    const decrease = () => {
+        setCount(count - 1);
+    };
+
+    const reset = () => {
+        setCount(0);
+    };
+
+    return (
+        <div>
+            <h1>Student Application</h1>
+
+            <Student
+                name="Kumar"
+                course="BCA"
+            />
+
+            <Counter
+                count={count}
+                increase={increase}
+                decrease={decrease}
+                reset={reset}
+            />
+        </div>
+    );
+}
+
+export default App;
+
+
+Concept: This example demonstrates two functional components, props, state, and event handling.
+
+5. Student Details with Edit and Reset
+import React, { useState } from "react";
+
+function Student(props) {
+    return (
+        <div>
+            <h2>Student Information</h2>
+
+            <p>Name: {props.name}</p>
+            <p>Department: {props.department}</p>
+
+            <button onClick={props.edit}>
+                Edit
+            </button>
+
+            <button onClick={props.reset}>
+                Reset
+            </button>
+        </div>
+    );
+}
+
+function App() {
+
+    const [name, setName] = useState("Priya");
+    const [department, setDepartment] =
+        useState("Computer Science");
+
+    function editStudent() {
+        setName("Priya Sharma");
+        setDepartment("Information Technology");
+    }
+
+    function resetStudent() {
+        setName("Priya");
+        setDepartment("Computer Science");
+    }
+
+    return (
+        <div>
+            <h1>Student Management</h1>
+
+            <Student
+                name={name}
+                department={department}
+                edit={editStudent}
+                reset={resetStudent}
+            />
+        </div>
+    );
+}
+
+export default App;
+
+
+Concept: Demonstrates props, state, event handling, Edit, and Reset functionality.
+
+Main concepts to remember
+Concept	Example
+Props	name={name}
+State	useState()
+Event handling	onClick={reset}
+Update state	setCount(count + 1)
+Reset	setCount(0)
+Functional component	function Student()
+Passing functions	reset={resetStudent}
+
+For a practical/lab exam, Example 4 is a good choice because it demonstrates student information, counter, props, useState, event handling, and reset functionality in one program.

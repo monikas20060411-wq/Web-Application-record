@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add and Remove Items</title>
+</head>
+<body>
+
+    <h2>My List</h2>
+
+    <input type="text" id="item" placeholder="Enter an item">
+    <button onclick="addItem()">Add</button>
+
+    <ul id="list"></ul>
+
+    <script>
+        function addItem() {
+            let input = document.getElementById("item");
+
+            if (input.value == "") {
+                alert("Please enter an item");
+                return;
+            }
+
+            let li = document.createElement("li");
+
+            li.innerHTML = input.value;
+
+            li.onclick = function() {
+                li.remove();
+            };
+
+            document.getElementById("list").appendChild(li);
+
+            input.value = "";
+        }
+    </script>
+
+</body>
+</html>
+
+
+Result: Enter an item and click Add. Click the created item to remove it.
+
+2. Dynamically Add and Remove Paragraphs
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Paragraph Example</title>
+</head>
+<body>
+
+    <h2>Dynamic Paragraphs</h2>
+
+    <button onclick="addParagraph()">Add Paragraph</button>
+    <button onclick="removeParagraph()">Remove Paragraph</button>
+
+    <div id="content"></div>
+
+    <script>
+        function addParagraph() {
+            let p = document.createElement("p");
+
+            p.innerText = "This paragraph was added dynamically.";
+
+            document.getElementById("content").appendChild(p);
+        }
+
+        function removeParagraph() {
+            let content = document.getElementById("content");
+
+            if (content.lastElementChild) {
+                content.lastElementChild.remove();
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
+Result: The Add Paragraph button creates a new paragraph, while Remove Paragraph deletes the last paragraph.
+
+3. Dynamic Shopping Cart
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+</head>
+<body>
+
+    <h2>Shopping Cart</h2>
+
+    <button onclick="addProduct('Laptop')">Add Laptop</button>
+    <button onclick="addProduct('Mobile')">Add Mobile</button>
+    <button onclick="addProduct('Headphones')">Add Headphones</button>
+
+    <ul id="cart"></ul>
+
+    <script>
+        function addProduct(product) {
+
+            let li = document.createElement("li");
+
+            li.innerText = product + " ";
+
+            let removeButton =
+                document.createElement("button");
+
+            removeButton.innerText = "Remove";
+
+            removeButton.onclick = function() {
+                li.remove();
+            };
+
+            li.appendChild(removeButton);
+
+            document.getElementById("cart")
+                    .appendChild(li);
+        }
+    </script>
+
+</body>
+</html>
+
+
+Result: Products are dynamically added to the shopping cart and can be removed individually.
+
+4. Dynamic Table Rows
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Table</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Student Details</h2>
+
+    <input type="text" id="name" placeholder="Student Name">
+    <button onclick="addStudent()">Add Student</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="studentTable">
+        </tbody>
+    </table>
+
+    <script>
+        function addStudent() {
+
+            let name =
+                document.getElementById("name").value;
+
+            if (name == "") {
+                alert("Enter student name");
+                return;
+            }
+
+            let row =
+                document.createElement("tr");
+
+            let nameCell =
+                document.createElement("td");
+
+            nameCell.innerText = name;
+
+            let actionCell =
+                document.createElement("td");
+
+            let button =
+                document.createElement("button");
+
+            button.innerText = "Remove";
+
+            button.onclick = function() {
+                row.remove();
+            };
+
+            actionCell.appendChild(button);
+
+            row.appendChild(nameCell);
+            row.appendChild(actionCell);
+
+            document.getElementById("studentTable")
+                    .appendChild(row);
+
+            document.getElementById("name").value = "";
+        }
+    </script>
+
+</body>
+</html>
+
+
+Result: Student names are added as new table rows and can be removed using the Remove button.
+
+5. Dynamic Cards
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Cards</title>
+
+    <style>
+        .card {
+            display: inline-block;
+            width: 180px;
+            padding: 20px;
+            margin: 10px;
+            background-color: lightblue;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Dynamic Product Cards</h2>
+
+    <button onclick="addCard()">Add Card</button>
+
+    <div id="cards"></div>
+
+    <script>
+        let count = 1;
+
+        function addCard() {
+
+            let card =
+                document.createElement("div");
+
+            card.className = "card";
+
+            card.innerHTML =
+                "<h3>Product " + count + "</h3>" +
+                "<p>This is a dynamic card.</p>";
+
+            let removeButton =
+                document.createElement("button");
+
+            removeButton.innerText = "Remove";
+
+            removeButton.onclick = function() {
+                card.remove();
+            };
+
+            card.appendChild(removeButton);
+
+            document.getElementById("cards")
+                    .appendChild(card);
+
+            count++;
+        }
+    </script>
+
+</body>
+</html>
+
+
+Result: Clicking Add Card creates a new product card. Each card has its own Remove button.
+
+Important DOM methods used
+JavaScript method	Purpose
+document.createElement()	Creates a new HTML element
+appendChild()	Adds an element to another element
+getElementById()	Finds an HTML element
+innerText	Changes the text of an element
+innerHTML	Adds HTML content
+remove()	Removes an element
+className	Adds a CSS class
+
+These five examples demonstrate the basic idea of DOM manipulation: JavaScript can create, add, modify, and remove HTML elements dynamically without manually editing the HTML.

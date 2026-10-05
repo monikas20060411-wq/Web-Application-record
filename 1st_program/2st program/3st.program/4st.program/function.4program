@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Table</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Student Details</h2>
+
+    <input type="text" id="name" placeholder="Student Name">
+    <button onclick="addStudent()">Add Student</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="studentTable">
+        </tbody>
+    </table>
+
+    <script>
+        function addStudent() {
+
+            let name =
+                document.getElementById("name").value;
+
+            if (name == "") {
+                alert("Enter student name");
+                return;
+            }
+
+            let row =
+                document.createElement("tr");
+
+            let nameCell =
+                document.createElement("td");
+
+            nameCell.innerText = name;
+
+            let actionCell =
+                document.createElement("td");
+
+            let button =
+                document.createElement("button");
+
+            button.innerText = "Remove";
+
+            button.onclick = function() {
+                row.remove();
+            };
+
+            actionCell.appendChild(button);
+
+            row.appendChild(nameCell);
+            row.appendChild(actionCell);
+
+            document.getElementById("studentTable")
+                    .appendChild(row);
+
+            document.getElementById("name").value = "";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+import React, { useState } from "react";
+
+function Student(props) {
+    return (
+        <div>
+            <h2>Student Details</h2>
+
+            <p>Name: {props.name}</p>
+            <p>Course: {props.course}</p>
+            <p>Roll Number: {props.rollNo}</p>
+
+            <button onClick={props.reset}>
+                Reset
+            </button>
+        </div>
+    );
+}
+
+function App() {
+
+    const [student, setStudent] = useState({
+        name: "Anita",
+        course: "B.Sc Computer Science",
+        rollNo: "101"
+    });
+
+    function resetStudent() {
+        setStudent({
+            name: "",
+            course: "",
+            rollNo: ""
+        });
+    }
+
+    return (
+        <div>
+            <h1>Student Application</h1>
+
+            <Student
+                name={student.name}
+                course={student.course}
+                rollNo={student.rollNo}
+                reset={resetStudent}
+            />
+        </div>
+    );
+}
+
+export default App;

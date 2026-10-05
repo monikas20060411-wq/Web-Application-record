@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+</head>
+<body>
+
+    <h2>Shopping Cart</h2>
+
+    <button onclick="addProduct('Laptop')">Add Laptop</button>
+    <button onclick="addProduct('Mobile')">Add Mobile</button>
+    <button onclick="addProduct('Headphones')">Add Headphones</button>
+
+    <ul id="cart"></ul>
+
+    <script>
+        function addProduct(product) {
+
+            let li = document.createElement("li");
+
+            li.innerText = product + " ";
+
+            let removeButton =
+                document.createElement("button");
+
+            removeButton.innerText = "Remove";
+
+            removeButton.onclick = function() {
+                li.remove();
+            };
+
+            li.appendChild(removeButton);
+
+            document.getElementById("cart")
+                    .appendChild(li);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+import { useReducer } from "react";
+
+const initialState = {
+  name: "",
+  email: "",
+  password: "",
+  errors: {}
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "UPDATE":
+      return {
+        ...state,
+        [action.field]: action.value
+      };
+
+    case "VALIDATE": {
+      const errors = {};
+
+      if (!state.name) {
+        errors.name = "Name required";
+      }
+
+      if (!/^\S+@\S+\.\S+$/.test(state.email)) {
+        errors.email = "Invalid email";
+      }
+
+      if (state.password.length < 8) {
+        errors.password = "Minimum 8 characters";
+      }
+
+      return {
+        ...state,
+        errors
+      };
+    }
+
+    default:
+      return state;
+  }
+}
+
+export default function RegistrationForm() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    dispatch({ type: "VALIDATE" });
+
+    if (
+      state.name &&
+      /^\S+@\S+\.\S+$/.test(state.email) &&
+      state.password.length >= 8
+    ) {
+      alert("Registration successful");
+    }
+  };
+
+  return (
+    <form onSubmit={submitForm}>
+      <input
+        placeholder="Name"
+        value={state.name}
+        onChange={(e) =>
+          dispatch({
+            type: "UPDATE",
+            field: "name",
+            value: e.target.value
+          })
+        }
+      />
+
+      <input
+        placeholder="Email"
+        value={state.email}
+        onChange={(e) =>
+          dispatch({
+            type: "UPDATE",
+            field: "email",
+            value: e.target.value
+          })
+        }
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        value={state.password}
+        onChange={(e) =>
+          dispatch({
+            type: "UPDATE",
+            field: "password",
+            value: e.target.value
+          })
+        }
+      />
+
+      <button type="submit">Register</button>
+    </form>
+  );
+}

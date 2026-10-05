@@ -1,0 +1,238 @@
+import React, { useState } from "react";
+
+function Counter() {
+
+    const [count, setCount] = useState(0);
+
+    return (
+        <div>
+            <h1>Counter App</h1>
+
+            <h2>Count: {count}</h2>
+
+            <button onClick={() => setCount(count + 1)}>
+                Increase
+            </button>
+
+            <button onClick={() => setCount(count - 1)}>
+                Decrease
+            </button>
+
+            <button onClick={() => setCount(0)}>
+                Reset
+            </button>
+        </div>
+    );
+}
+
+export default Counter;
+
+
+Concept: Uses useState(0) to store and update the counter value.
+
+2. Counter with CSS Styling
+import React, { useState } from "react";
+
+function Counter() {
+
+    const [count, setCount] = useState(0);
+
+    return (
+        <div style={{
+            textAlign: "center",
+            marginTop: "100px",
+            fontFamily: "Arial"
+        }}>
+
+            <h1>Counter Application</h1>
+
+            <h2 style={{ color: "blue" }}>
+                {count}
+            </h2>
+
+            <button onClick={() => setCount(count + 1)}>
+                Increase
+            </button>
+
+            <button onClick={() => setCount(count - 1)}>
+                Decrease
+            </button>
+
+            <button onClick={() => setCount(0)}>
+                Reset
+            </button>
+
+        </div>
+    );
+}
+
+export default Counter;
+
+
+Concept: Uses JSX with inline CSS styling.
+
+3. Counter Using Separate Functions
+import React, { useState } from "react";
+
+function Counter() {
+
+    const [count, setCount] = useState(0);
+
+    function increase() {
+        setCount(count + 1);
+    }
+
+    function decrease() {
+        setCount(count - 1);
+    }
+
+    function reset() {
+        setCount(0);
+    }
+
+    return (
+        <div>
+            <h1>Simple Counter</h1>
+
+            <h2>{count}</h2>
+
+            <button onClick={increase}>
+                Increase
+            </button>
+
+            <button onClick={decrease}>
+                Decrease
+            </button>
+
+            <button onClick={reset}>
+                Reset
+            </button>
+        </div>
+    );
+}
+
+export default Counter;
+
+
+Concept: Each button calls a separate function that updates the state.
+
+4. Counter with Minimum Value
+import React, { useState } from "react";
+
+function Counter() {
+
+    const [count, setCount] = useState(0);
+
+    const increase = () => {
+        setCount(count + 1);
+    };
+
+    const decrease = () => {
+        if (count > 0) {
+            setCount(count - 1);
+        }
+    };
+
+    const reset = () => {
+        setCount(0);
+    };
+
+    return (
+        <div>
+            <h1>Counter App</h1>
+
+            <h2>Count: {count}</h2>
+
+            <button onClick={increase}>
+                Increase
+            </button>
+
+            <button onClick={decrease}>
+                Decrease
+            </button>
+
+            <button onClick={reset}>
+                Reset
+            </button>
+        </div>
+    );
+}
+
+export default Counter;
+
+
+Concept: The counter cannot go below 0.
+
+5. Complete React Counter with Separate Components
+import React, { useState } from "react";
+
+function CounterButtons({ increase, decrease, reset }) {
+
+    return (
+        <div>
+            <button onClick={increase}>
+                Increase
+            </button>
+
+            <button onClick={decrease}>
+                Decrease
+            </button>
+
+            <button onClick={reset}>
+                Reset
+            </button>
+        </div>
+    );
+}
+
+function Counter() {
+
+    const [count, setCount] = useState(0);
+
+    const increase = () => {
+        setCount(count + 1);
+    };
+
+    const decrease = () => {
+        setCount(count - 1);
+    };
+
+    const reset = () => {
+        setCount(0);
+    };
+
+    return (
+        <div>
+            <h1>React Counter</h1>
+
+            <h2>Current Count: {count}</h2>
+
+            <CounterButtons
+                increase={increase}
+                decrease={decrease}
+                reset={reset}
+            />
+        </div>
+    );
+}
+
+export default Counter;
+
+
+Concept: Demonstrates functional components, JSX, useState, props, and event handling.
+
+Main React concepts used
+
+useState() → stores the counter value.
+
+setCount() → changes the counter value.
+
+JSX → describes the UI.
+
+onClick → handles button clicks.
+
+Functional components → Counter() and CounterButtons().
+
+Props → pass button functions from the parent component to the child component.
+
+For a basic practical exam, Examples 1 or 3 are the easiest to understand and write.

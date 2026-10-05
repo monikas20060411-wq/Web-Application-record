@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delicious Restaurant</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff8e1;
+        }
+
+        header {
+            background-color: #e65100;
+            color: white;
+            text-align: center;
+            padding: 35px;
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            font-size: 40px;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 40px;
+        }
+
+        .food {
+            background-color: white;
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        .food h2 {
+            color: #e65100;
+        }
+
+        .price {
+            color: #2e7d32;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Delicious Restaurant</h1>
+        <p>Fresh Food • Great Taste</p>
+    </header>
+
+    <div class="menu">
+
+        <div class="food">
+            <h2>Pizza</h2>
+            <p>Cheesy vegetable pizza.</p>
+            <p class="price">₹250</p>
+        </div>
+
+        <div class="food">
+            <h2>Burger</h2>
+            <p>Fresh vegetable burger.</p>
+            <p class="price">₹150</p>
+        </div>
+
+        <div class="food">
+            <h2>Pasta</h2>
+            <p>Creamy Italian pasta.</p>
+            <p class="price">₹200</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Delicious Restaurant</p>
+    </footer>
+
+</body>
+</html>

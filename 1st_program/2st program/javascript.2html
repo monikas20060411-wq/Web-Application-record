@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Validation</title>
+
+    <script>
+        function validateForm() {
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            let emailPattern =
+                /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            if (!emailPattern.test(email)) {
+                alert("Enter a valid email address.");
+                return false;
+            }
+
+            if (password.length < 8) {
+                alert("Password must have at least 8 characters.");
+                return false;
+            }
+
+            alert("Validation successful!");
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+
+    <h2>User Login</h2>
+
+    <form onsubmit="return validateForm()">
+
+        <label>Email:</label>
+        <input type="text" id="email">
+        <br><br>
+
+        <label>Password:</label>
+        <input type="password" id="password">
+        <br><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Paragraph Example</title>
+</head>
+<body>
+
+    <h2>Dynamic Paragraphs</h2>
+
+    <button onclick="addParagraph()">Add Paragraph</button>
+    <button onclick="removeParagraph()">Remove Paragraph</button>
+
+    <div id="content"></div>
+
+    <script>
+        function addParagraph() {
+            let p = document.createElement("p");
+
+            p.innerText = "This paragraph was added dynamically.";
+
+            document.getElementById("content").appendChild(p);
+        }
+
+        function removeParagraph() {
+            let content = document.getElementById("content");
+
+            if (content.lastElementChild) {
+                content.lastElementChild.remove();
+            }
+        }
+    </script>
+
+</body>
+</html>
